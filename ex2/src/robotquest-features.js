@@ -49,12 +49,59 @@ function turn(robot, step, turns) {
 
     return turns;
 }
+/*
 
 function move(robot, maxLineIndex, maxColumnIndex, nbOfMoves) {
+    if(robot.head ==='up' && robot.position.line < maxLineIndex){
+        robot.position.line +=1;
+
+    }else if  (robot.head ==='right' && robot.position.column < maxColumnIndex){
+        robot.position.column +=1;
+
+    }else if  (robot.head ==='down' && robot.position.line < maxLineIndex){
+        robot.position.line -=1;
+    }
+    else if  (robot.head ==='left' && robot.position.column < maxColumnIndex) {
+            robot.position.column -= 1;
+        }
+
+
+
+
+
+            nbOfMoves += 1;
+    return nbOfMoves ;
+}*/
+
+function move(robot, maxLineIndex, maxColumnIndex, nbOfMoves) {
+    switch(robot.head){
+
+
+        case('up'):
+        robot.position.line ++;
+        break;
+
+        case('right'):
+        robot.position.column +=1;
+        break;
+        case('down'):
+        robot.position.line -=1;
+        break;
+        case('left'):
+        robot.position.column -= 1;
+        break;
+    }
+
+
+
+
+
 
     nbOfMoves += 1;
-    return nbOfMoves;
+    return nbOfMoves ;
 }
+
+
 
 function updateBoard(board, previousRobotState, currentRobotState) {
     return;
