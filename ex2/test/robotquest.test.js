@@ -1,6 +1,6 @@
 const featuresToTest = require('../src/robotquest-features');
 
-test('robot should have its head turned to the right when head is up and direction is right', () => {
+    test('robot should have its head turned to the right when head is up and direction is right', () => {
    let robot = {
         position: {
             line: 0,
@@ -9,13 +9,79 @@ test('robot should have its head turned to the right when head is up and directi
         head: 'up'
     };
 
-    let nbOfTurn = featuresToTest.turn(robot, 'right', 1);
-    expect(nbOfTurn).toBe(2);
+    let nbOfTurn = featuresToTest.turn(robot, 'turn-right', 0);
+    expect(nbOfTurn).toBe(1);
     expect(robot.head).toBe('right');
+});
+    test('robot should have its head down when head is left and direction is left', () => {
+    let robot = {
+        position: {
+            line: 0,
+            column: 0
+        },
+        head: 'up'
+    };
+
+    let nbOfTurn = featuresToTest.turn(robot, 'turn-left', 1);
+    expect(nbOfTurn).toBe(2);
+    expect(robot.head).toBe('left');
 });
 
 
-test('robot should have its head down when head is left and direction is left', () => {
+
+    test('robot should have its head down when head is left and direction is left', () => {
+    let robot = {
+        position: {
+            line: 0,
+            column: 0
+        },
+        head: 'right'
+    };
+
+    let nbOfTurn = featuresToTest.turn(robot, 'turn-right', 2);
+    expect(nbOfTurn).toBe(3);
+    expect(robot.head).toBe('down');
+});
+    test('robot should have its head down when head is left and direction is left', () => {
+    let robot = {
+        position: {
+            line: 0,
+            column: 0
+        },
+        head: 'right'
+    };
+
+    let nbOfTurn = featuresToTest.turn(robot, 'turn-left', 3);
+    expect(nbOfTurn).toBe(4);
+    expect(robot.head).toBe('up');
+});
+    test('robot should have its head down when head is left and direction is left', () => {
+    let robot = {
+        position: {
+            line: 0,
+            column: 0
+        },
+        head: 'down'
+    };
+
+    let nbOfTurn = featuresToTest.turn(robot, 'turn-right', 4);
+    expect(nbOfTurn).toBe(5);
+    expect(robot.head).toBe('left');
+});
+    test('robot should have its head down when head is left and direction is left', () => {
+    let robot = {
+        position: {
+            line: 0,
+            column: 0
+        },
+        head: 'down'
+    };
+
+    let nbOfTurn = featuresToTest.turn(robot, 'turn-left', 5);
+    expect(nbOfTurn).toBe(6);
+    expect(robot.head).toBe('right');
+});
+    test('robot should have its head down when head is left and direction is left', () => {
     let robot = {
         position: {
             line: 0,
@@ -24,8 +90,21 @@ test('robot should have its head down when head is left and direction is left', 
         head: 'left'
     };
 
-    let nbOfTurn = featuresToTest.turn(robot, 'turn-left', 8);
-    expect(nbOfTurn).toBe(9);
+    let nbOfTurn = featuresToTest.turn(robot, 'turn-right', 6);
+    expect(nbOfTurn).toBe(7);
+    expect(robot.head).toBe('up');
+});
+    test('robot should have its head down when head is left and direction is left', () => {
+    let robot = {
+        position: {
+            line: 0,
+            column: 0
+        },
+        head: 'left'
+    };
+
+    let nbOfTurn = featuresToTest.turn(robot, 'turn-left', 7);
+    expect(nbOfTurn).toBe(8);
     expect(robot.head).toBe('down');
 });
 
