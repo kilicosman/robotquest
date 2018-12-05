@@ -113,8 +113,3 @@ function setReverse(char) {
 function setBright(char) {
     return `\x1b[1m${char}\x1b[0m`;
 }
-
-
-
-
-

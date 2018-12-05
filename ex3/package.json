@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "npm": "^6.4.1"
+    "npm": "^6.4.1",
+    "prompt": "^1.0.0",
+    "readline-sync": "^1.4.9"
   },
   "devDependencies": {
+    "prompt-sync": "^4.1.6",
     "jest": "^23.6.0"
   }
 }

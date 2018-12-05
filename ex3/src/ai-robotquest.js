@@ -10,12 +10,66 @@ const W = features.SYMBOLS.water;
 
 const PLAY_BOARD = [
     [T,   T,    '.',   F],
-    [T,   '.',  '.', '.'],
+    [T,   '.', '.', '.'],
     ['.', '.',  '.', '.'],
     [R,   '.',  '.',   W]
 ];
 
-const STEPS_TO_FLAG = ['move', 'turn-right', 'move', 'move', 'move', 'turn-left', 'move', 'move'];
+
+
+
+
+
+let board1 = PLAY_BOARD.reverse();
+// we play upside down, so the robot starts (0,0) in the bottom left
+var STEPS_TO_FLAG;
+STEPS_TO_FLAG = [];
+let i=0;
+let j=0;
+let k=0;
+let maxLineIndex1 = board1.length - 1;
+
+
+let maxColumnIndex1 = board1[0].length - 1;
+
+
+for(let a=1;a<2;a){
+
+    if(i < maxColumnIndex1 && board1[i + 1][j] === '.'){
+
+        STEPS_TO_FLAG[k]= 'move';
+        k++;
+
+        i++;
+
+
+
+    }else if (j < maxLineIndex1 && board1[i][j + 1] === '.') {
+        STEPS_TO_FLAG[k] = 'turn-right';
+        k++;
+        STEPS_TO_FLAG[k] = 'move';
+        k++;
+        STEPS_TO_FLAG[k] = 'turn-left';
+        k++;
+        j++;
+
+    } else if (board1[i][j + 1] === F) {
+        STEPS_TO_FLAG[k] = 'turn-right';
+        k++;
+        STEPS_TO_FLAG[k] = 'move';
+        k++;
+        STEPS_TO_FLAG[k] = 'turn-left';
+        k++;
+        j++;
+
+    } else {
+        a = 2;
+
+
+    }
+}
+let board2=PLAY_BOARD.reverse();
+
 
 
 let ROBOT_START_STATE = {
