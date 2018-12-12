@@ -9,8 +9,8 @@ const F = features.SYMBOLS.flag;
 const W = features.SYMBOLS.water;
 
 const PLAY_BOARD = [
-    [T,   T,    '.',   F],
-    [T,   '.', '.', '.'],
+    [T,    T,    T,   F],
+    [T,   T, T, '.'],
     ['.', '.',  '.', '.'],
     [R,   '.',  '.',   W]
 ];
@@ -32,10 +32,11 @@ let maxLineIndex1 = board1.length - 1;
 
 let maxColumnIndex1 = board1[0].length - 1;
 
+let isStillPlaying = true;
 
-for(let a=1;a<2;a){
+while(isStillPlaying){
 
-    if(i < maxColumnIndex1 && board1[i + 1][j] === '.'){
+     if(i < maxColumnIndex1 && board1[i + 1][j] === '.'){
 
         STEPS_TO_FLAG[k]= 'move';
         k++;
@@ -44,7 +45,15 @@ for(let a=1;a<2;a){
 
 
 
-    }else if (j < maxLineIndex1 && board1[i][j + 1] === '.') {
+
+    }
+     else if (i < maxColumnIndex1 && board1[i+1][j] === F) {
+
+         STEPS_TO_FLAG[k] = 'move';
+         k++;
+
+         i++;
+     }else if (j < maxLineIndex1 && board1[i][j + 1] === '.') {
         STEPS_TO_FLAG[k] = 'turn-right';
         k++;
         STEPS_TO_FLAG[k] = 'move';
@@ -53,7 +62,12 @@ for(let a=1;a<2;a){
         k++;
         j++;
 
-    } else if (board1[i][j + 1] === F) {
+
+
+
+
+
+     } else if (board1[i][j + 1] === F) {
         STEPS_TO_FLAG[k] = 'turn-right';
         k++;
         STEPS_TO_FLAG[k] = 'move';
@@ -62,10 +76,8 @@ for(let a=1;a<2;a){
         k++;
         j++;
 
-    } else {
-        a = 2;
-
-
+    }else {
+        isStillPlaying = false;
     }
 }
 let board2=PLAY_BOARD.reverse();

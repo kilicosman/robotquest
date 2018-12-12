@@ -30,9 +30,26 @@ let maxLineIndex1 = board1.length - 1;
 let maxColumnIndex1 = board1[0].length - 1;
 
 
-for(let a=1;a<5;a){
+let isStillPlaying = true;
+let isSmallerThanMaxColIndex = i <maxColumnIndex1;
 
-    if(i <maxColumnIndex1 && board1[i+1][j]==='.'){
+
+
+while(isStillPlaying){
+    let lineIdx = i+1;
+    console.log("i-value"+i);
+    let colIdx = j;
+    if (lineIdx<4){ isStillPlaying= false;}
+    let isOnADot = board1[lineIdx][colIdx] === '.';
+    let isFlagReached = board1[lineIdx][colIdx] === 'F';
+
+    console.log("Help me !!!!!: "+ lineIdx + "/" + colIdx);
+
+
+
+    if(isSmallerThanMaxColIndex
+        && isOnADot
+        || isFlagReached){
 
         STEPS_TO_FLAG[k]= 'move';
         k++;
@@ -54,7 +71,7 @@ for(let a=1;a<5;a){
 
 
     } else {
-        a=5;
+        isStillPlaying= false;
 
 
     }
