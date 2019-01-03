@@ -1,8 +1,5 @@
 'use strict';
-
 let features = require('./robotquest-features');
-const readline = require('readline');
-
 
 // This code is inspired from https://github.com/HackYourFuture/RobotApp
 
@@ -18,6 +15,8 @@ const PLAY_BOARD = [
     [R,   '.',  '.',   W]
 ];
 
+const STEPS_TO_FLAG = ['move', 'turn-right', 'move', 'move', 'move', 'turn-left', 'move', 'move'];
+
 
 let ROBOT_START_STATE = {
     position: {
@@ -30,13 +29,6 @@ let ROBOT_START_STATE = {
 let moves = 0;
 let turns = 0;
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-    prompt: '\n???> ' // OBS: '\n' means 'new line'
-});
-
-
 
 function main() {
     let maxLineIndex = PLAY_BOARD.length - 1;
@@ -47,24 +39,9 @@ function main() {
     let isFlagReached = false;
     renderBoard(board, isFlagReached);
 
-    rl.prompt();
-    rl.on('line', (inputFromUser) => {
-        let step = undefined;
+    for (let index in STEPS_TO_FLAG) {
+        let step = STEPS_TO_FLAG[index];
         let previousRobotState = features.cloneRobot(currentRobot);
-
-        switch (inputFromUser.trim()) {
-            case 'm':
-                step = 'move';
-                console.log('move');
-                break;
-            case 'r':
-                step ="turn-right"
-                console.log('turn right');
-                break;
-            default:
-                console.log(`Unknown command, not one of ('r', 'l', 'm') '${inputFromUser.trim()}'`);
-                break;
-        }
 
         let hasMoved = applyStep(currentRobot, step, maxLineIndex, maxColumnIndex);
         isFlagReached = features.checkIfFlagReached(currentRobot, board);
@@ -73,13 +50,7 @@ function main() {
         if (hasMoved) {
             renderBoard(board, isFlagReached);
         }
-
-        rl.prompt();
-    }).on('close', () => {
-        console.log('\nBye...');
-        process.exit(0);
-    });
-
+    }
 }
 
 
@@ -106,7 +77,6 @@ function renderBoard(board, flagReached) {
 
 
 function applyStep(robot, step, maxLineIndex, maxColumnIndex) {
-
 
     if (step === 'turn-right' || step === 'turn-left') {
         turns = features.turn(robot, step, turns);
