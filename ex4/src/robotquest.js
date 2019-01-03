@@ -62,6 +62,7 @@ function main() {
                 console.log('turn right');
                 break;
             default:
+                step = undefined;
                 console.log(`Unknown command, not one of ('r', 'l', 'm') '${inputFromUser.trim()}'`);
                 break;
         }
@@ -107,6 +108,10 @@ function renderBoard(board, flagReached) {
 
 function applyStep(robot, step, maxLineIndex, maxColumnIndex) {
 
+
+    if (step === undefined) {
+        return false;
+    }
 
     if (step === 'turn-right' || step === 'turn-left') {
         turns = features.turn(robot, step, turns);
