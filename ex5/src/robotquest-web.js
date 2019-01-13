@@ -8,7 +8,8 @@ function main() {
 
     // attach events to your elements/buttons
     document.getElementById("turn-left-button").addEventListener("click", turn_left);
-
+    document.getElementById("turn-right-button").addEventListener("click", turn_right);
+    document.getElementById("move-button").addEventListener("click", move_robot );
     // Initialize your global variables (robot, nbOfMoves, etc...)
 
 

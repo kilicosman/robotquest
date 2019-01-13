@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Robotquest</title>
+    </head>
+
+    <script type="module" src="/src/robotquest-web.js"></script>
+
+    <body>
+    <div id="root">
+    <div id="toolbar" class="toolbar">
+    <button id="turn-left-button">TURN-LEFT</button>
+    <button id="turn-right-button">TURN-RIGHT</button>
+    <button id="move-button">MOVE</button>
+    </div>
+    <p>here gonna be output</p>
+<div id="board" class="board">
+    <!-- Here will be loaded a table at runtime -->
+<div>
+<table border="l">
+    <tr>
+    <td id="l3c0"> T </td>
+    <td id="l3c1"> T </td>
+    <td id="l3c2">   </td>
+    <td id="l3c3"> F </td>
+    </tr>
+    <tr>
+    <td id="l2c0"> T </td>
+    <td id="l2c1">   </td>
+    <td id="l2c2">   </td>
+    <td id="l2c3">   </td>
+    </tr>
+    <tr>
+    <td id="l1c0">   </td>
+    <td id="l1c1">   </td>
+    <td id="l1c2">   </td>
+    <td id="l1c3">   </td>
+    </tr>
+    <tr>
+    <td id="l0c0"> R↑ </td>
+<td id="l0c1">    </td>
+    <td id="l0c2">    </td>
+    <td id="l0c3"> W </td>
+    </tr>
+    </table>
+    </div>
+    </div>
+
+    </div>
+    </body>
+
+    </html>
